@@ -1027,15 +1027,22 @@ if(savedPw === APP_PW){
     input.focus();
   }, 100);
 }
-const memosRef = db.ref('memos');
-const annivsRef = db.ref('annivs');
-const chatRef = db.ref('chat');
-const boardRef = db.ref('board');
-const trashRef = db.ref('trash');
-const presenceRef = db.ref('presence');
+// ── 사이트별 데이터 분리 ──
+// GitHub Pages 저장소 이름(URL 경로의 첫 조각)으로 어느 사이트인지 구분해서
+// memo-app(기존 운영 중인 사이트, 엑셀 매크로가 쓰는 데이터)은 지금까지 쓰던 경로 그대로 사용하고,
+// hisys처럼 새로 올린 사본은 별도 네임스페이스 아래에 완전히 독립된 데이터를 사용하게 함.
+const _siteSeg = location.pathname.split('/').filter(Boolean)[0] || '';
+const SITE_NS = (_siteSeg === 'hisys') ? 'apps/hisys/' : '';
+
+const memosRef = db.ref(SITE_NS+'memos');
+const annivsRef = db.ref(SITE_NS+'annivs');
+const chatRef = db.ref(SITE_NS+'chat');
+const boardRef = db.ref(SITE_NS+'board');
+const trashRef = db.ref(SITE_NS+'trash');
+const presenceRef = db.ref(SITE_NS+'presence');
 const connectedRef = db.ref('.info/connected');
-const board2Ref = db.ref('board2');
-const predictRef = db.ref('predict');
+const board2Ref = db.ref(SITE_NS+'board2');
+const predictRef = db.ref(SITE_NS+'predict');
 // 이 세션의 고유 ID (탭마다 다름)
 const sessionId = 'sess_' + Date.now() + '_' + Math.floor(Math.random()*10000);
 let isLocalChange = false; // 자기 자신이 쓴 변경은 재렌더만, 무한루프 방지용 플래그는 아니고 표시용
@@ -1482,14 +1489,14 @@ function confirmPassword(){
 // ── 댓글 ──
 function saveComment(boardType, postId, text){
   // boardType: 'board' or 'board2'
-  const ref=db.ref(boardType+'/'+postId+'/comments');
+  const ref=db.ref(SITE_NS+boardType+'/'+postId+'/comments');
   const cid='c'+Date.now();
   ref.child(cid).set({
     id:cid, text, author:myName||'익명', ts:Date.now()
   });
 }
 function deleteComment(boardType, postId, commentId){
-  db.ref(boardType+'/'+postId+'/comments/'+commentId).remove();
+  db.ref(SITE_NS+boardType+'/'+postId+'/comments/'+commentId).remove();
 }
 function buildCommentSection(boardType, post){
   const section=document.createElement('div');
