@@ -1028,12 +1028,9 @@ if(savedPw === APP_PW){
     input.focus();
   }, 100);
 }
-// ── 사이트별 데이터 분리 ──
-// GitHub Pages 저장소 이름(URL 경로의 첫 조각)으로 어느 사이트인지 구분해서
-// memo-app(기존 운영 중인 사이트, 엑셀 매크로가 쓰는 데이터)은 지금까지 쓰던 경로 그대로 사용하고,
-// hisys처럼 새로 올린 사본은 별도 네임스페이스 아래에 완전히 독립된 데이터를 사용하게 함.
-const _siteSeg = location.pathname.split('/').filter(Boolean)[0] || '';
-const SITE_NS = (_siteSeg === 'hisys') ? 'apps/hisys/' : '';
+// ── hisys 전용 데이터 공간 ──
+// memo-app과 완전히 분리된 고정 경로를 사용 (경로 자동감지 없이 항상 이 값으로 고정)
+const SITE_NS = 'apps/hisys/';
 
 const memosRef = db.ref(SITE_NS+'memos');
 const annivsRef = db.ref(SITE_NS+'annivs');
