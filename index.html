@@ -2,18 +2,17 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>🖥️ HISYS</title>
+<title>🏗️ HISYS 현장</title>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <style>
 :root{--bg:#0f172a;--panel:#1e293b;--card:#1e293b;--hover:#2d3a52;--accent:#3b82f6;--accent2:#6366f1;--text:#e2e8f0;--sub:#94a3b8;--dim:#64748b;--border:#334155;}
 *{box-sizing:border-box;margin:0;padding:0;}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 body{font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden;}
 /* topbar */
 .topbar{display:flex;align-items:center;gap:10px;padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--border);flex-shrink:0;flex-wrap:wrap;}
@@ -395,87 +394,93 @@ input[type=range]{accent-color:var(--accent);}
 
 /* ══ 폰 (640px 이하) ══ */
 @media(max-width:640px){
-  /* 기본 레이아웃 */
-  body{height:100dvh;}
-  .topbar{padding:5px 8px;gap:5px;flex-wrap:nowrap;overflow-x:auto;}
-  .topbar-title{font-size:14px;white-space:nowrap;}
+  /* 기본 */
+  body{height:100dvh;font-size:15px;}
+  .topbar{padding:6px 10px;gap:6px;flex-wrap:nowrap;overflow-x:auto;}
+  .topbar-title{font-size:16px;white-space:nowrap;font-weight:800;}
   .search-wrap{flex:1;min-width:0;}
-  .search-input{width:100%;font-size:13px;}
-  .tbtn{font-size:10px;padding:3px 6px;white-space:nowrap;}
+  .search-input{width:100%;font-size:14px;padding:6px 10px;}
+  .tbtn{font-size:12px;padding:5px 9px;white-space:nowrap;}
   #online-users{display:none;}
 
-  /* 메인탭 → 상단 스크롤 탭 */
+  /* 메인탭 */
   .maintabs{padding:0;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:0;border-bottom:2px solid var(--border);}
   .maintabs::-webkit-scrollbar{display:none;}
-  .mtab{font-size:13px;padding:8px 12px;white-space:nowrap;border-bottom:none;}
+  .mtab{font-size:14px;padding:10px 14px;white-space:nowrap;border-bottom:none;font-weight:600;}
   .mtab.on{border-bottom:3px solid var(--accent);}
 
-  /* 달력+메모 페이지: 세로 분할 */
+  /* 달력+메모 */
   .page#page-cal{flex-direction:column;}
   .main{flex-direction:column;overflow-y:auto;}
-
-  /* 달력: 전체 너비, 높이 자동 */
   .calp{width:100%;flex-shrink:0;border-right:none;border-bottom:1px solid var(--border);max-height:55dvh;}
   .calp.hidden{max-height:0;overflow:hidden;border-bottom:none;}
-  .calh-row1{gap:4px;}
-  .calml{font-size:11px;}
-  .calnav{width:22px;height:22px;font-size:12px;}
-  .btnadd{font-size:11px;padding:4px 8px;}
-  .wrtab{font-size:10px;padding:2px 5px;}
+  .calh-row1{gap:5px;}
+  .calml{font-size:13px;}
+  .calnav{width:28px;height:28px;font-size:14px;}
+  .btnadd{font-size:13px;padding:6px 12px;}
+  .wrtab{font-size:12px;padding:4px 8px;}
   .daynum{font-size:14px;width:22px;height:22px;}
-  .chip,.chip-holi,.chip-solar,.chip-anniv{font-size:10px;}
+  .chip,.chip-holi,.chip-solar,.chip-anniv{font-size:11px;}
   .cal-week-mode .chip,.cal-week-mode .chip-holi,.cal-week-mode .chip-solar,.cal-week-mode .chip-anniv{font-size:13px;}
+  .cal-toggle-btn{font-size:12px;padding:5px 9px;}
 
-  /* 메모 패널: 전체 너비 */
+  /* 메모 패널 */
   .memp{width:100%;flex:1;min-height:0;}
-  .memh{padding:7px 10px;gap:6px;flex-wrap:nowrap;overflow-x:auto;}
-  .memhdate{font-size:13px;white-space:nowrap;}
-  .vtabs{gap:2px;}
-  .vtab{font-size:11px;padding:4px 7px;}
-  .meml{padding:8px;}
-  .meml.grid-mode{grid-template-columns:repeat(2,1fr);gap:6px;}
-  .cal-hidden-mode .meml.grid-mode{grid-template-columns:repeat(2,1fr);}
-
-  /* 메모 카드 */
-  .mctitle{font-size:14px;}
-  .mcbody{font-size:13px;}
-  .mcard{padding:8px 10px;}
-  .mcard.compact .mctitle{font-size:11px;}
-  .mcard.compact .mcbody{font-size:10px;}
-
-  /* 달력 토글 버튼 */
-  .cal-toggle-btn{font-size:10px;padding:3px 6px;}
+  .memh{padding:8px 12px;gap:6px;flex-wrap:nowrap;overflow-x:auto;}
+  .memhdate{font-size:15px;white-space:nowrap;font-weight:700;}
+  .vtabs{gap:3px;}
+  .vtab{font-size:13px;padding:6px 10px;}
+  .meml{padding:10px;}
+  .meml.grid-mode{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .mctitle{font-size:15px;}
+  .mcbody{font-size:14px;}
+  .mcard{padding:10px 12px;}
 
   /* 채팅 */
-  .chatbubble{font-size:14px;padding:8px 11px;}
-  .chatinput{font-size:14px;padding:8px 13px;}
-  .chatsend{padding:8px 14px;font-size:13px;}
-  .chathead{padding:6px 10px;}
+  .chatbubble{font-size:15px;padding:9px 13px;}
+  .chatinput{font-size:15px;padding:10px 14px;}
+  .chatsend{padding:10px 16px;font-size:14px;}
+  .chathead{padding:8px 12px;font-size:14px;}
 
   /* 게시판 */
-  .boardlist{grid-template-columns:repeat(2,1fr);}
-  .bptitle{font-size:13px;}
-  .bpbody{font-size:12px;}
-  .boardtoolbar{padding:7px 10px;}
+  .boardlist{grid-template-columns:1fr;}
+  .bptitle{font-size:15px;}
+  .bpbody{font-size:14px;}
+  .bpfoot{font-size:12px;}
+  .boardtoolbar{padding:8px 12px;}
+  .boardpost{padding:12px 14px 20px;}
+  .btnadd{font-size:14px;padding:7px 14px;}
+  .vtab{font-size:13px;}
+
+  /* 업무공유 */
+  #board2-list{padding:8px!important;}
 
   /* 모달 */
-  .modal{width:95vw!important;max-height:88dvh;padding:16px;}
-  .modal h2{font-size:15px;}
-  .fi,.fta{font-size:14px;padding:8px 10px;}
+  .modal{width:96vw!important;max-height:90dvh;padding:16px;}
+  .modal h2{font-size:17px;margin-bottom:12px;}
+  .fi{font-size:15px;padding:10px 12px;}
+  .fta{font-size:14px;padding:10px 12px;min-height:120px;}
+  .fl{font-size:13px;margin-bottom:4px;}
   .fr2{grid-template-columns:1fr;}
-  .bsav,.bcnl{padding:8px 14px;font-size:13px;}
+  .bsav{padding:10px 18px;font-size:15px;}
+  .bcnl{padding:10px 14px;font-size:14px;}
+  .chkl{font-size:14px;}
 
   /* 승부예측 */
   #predict-list{grid-template-columns:1fr!important;}
-  .predict-title{font-size:15px;}
+  .predict-title{font-size:16px;}
   .predict-table{font-size:14px;}
+  .predict-table td,.predict-table th{padding:6px 8px;}
 
-  /* 자료실 */
-  #board2-list{padding:8px!important;}
+  /* 스와치 색상 선택 */
+  .csw{width:44px;height:30px;font-size:9px;}
 
-  /* 휴지통/기념일 모달 */
-  .trash-item{flex-direction:column;align-items:flex-start;gap:6px;}
-  .trash-item .btn-cancel,.trash-item .btn-del{width:100%;}
+  /* 공통 버튼 */
+  .mcbtn{font-size:13px;padding:4px 6px;}
+  .tbtn{min-height:32px;}
+
+  /* 휴지통/기념일 */
+  .trash-item{flex-direction:column;align-items:flex-start;gap:8px;}
 }
 
 /* ══ 매우 작은 폰 (380px 이하) ══ */
@@ -508,7 +513,7 @@ input[type=range]{accent-color:var(--accent);}
 <div id="img-viewer"><img id="img-viewer-img" src=""></div>
 
 <div class="topbar">
-  <div class="topbar-title">🖥️ <span>HI</span>SYS</div>
+  <div class="topbar-title">🏗️ <span>HI</span>SYS 현장</div>
   <div class="search-wrap">
     <input class="search-input" id="search-input" type="text" placeholder="🔍 메모·게시판·채팅 검색...">
     <button class="search-clear hide" id="search-clear">✕</button>
@@ -522,9 +527,9 @@ input[type=range]{accent-color:var(--accent);}
 </div>
 
 <div class="maintabs">
-  <button class="mtab on" id="mtab-cal">📅 달력/메모</button>
+  <button class="mtab" id="mtab-cal">📅 달력/메모</button>
   <button class="mtab" id="mtab-chat">💬 채팅 <span class="badge hide" id="chat-badge">0</span></button>
-  <button class="mtab" id="mtab-board">📌 게시판 <span class="badge hide" id="board-badge">0</span></button>
+  <button class="mtab on" id="mtab-board">📌 게시판 <span class="badge hide" id="board-badge">0</span></button>
   <button class="mtab" id="mtab-board2">📋 업무공유</button>
   <button class="mtab" id="mtab-predict">🏆 승부예측</button>
 </div>
@@ -915,7 +920,7 @@ let flashNewMemoId=null; // 방금 도착한 새 글 강조용
 let chatMsgs=[], boardPosts=[];
 let knownChatIds=null, knownBoardIds=null;
 let chatUnread=0, boardUnread=0;
-let curMainTab='cal';
+let curMainTab='board';
 let editBoardId=null;
 let bfBgColor='#263046', bfTextColor='#e2e8f0';
 let boardView='all'; // 'all' | 'archive'
@@ -936,11 +941,11 @@ function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').
 
 // ── Firebase 설정 ──
 const firebaseConfig = {
-  apiKey: "AIzaSyCyPvfNmCzf3N27nFYlW1RLRSn7xajoYO0",
-  authDomain: "kimbk-memo2.firebaseapp.com",
-  databaseURL: "https://kimbk-memo2-default-rtdb.firebaseio.com",
-  projectId: "kimbk-memo2",
-  storageBucket: "kimbk-memo2.firebasestorage.app",
+  apiKey: "AIzaSyDzDXhN7t5Ej4mRevMzO8IJUnGzU3yG87U",
+  authDomain: "hisys-app.firebaseapp.com",
+  databaseURL: "https://hisys-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "hisys-app",
+  storageBucket: "hisys-app.firebasestorage.app",
   messagingSenderId: "405004928399",
   appId: "1:405004928399:web:b3764abc13941bb7a077fa"
 };
@@ -948,7 +953,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 
-const APP_PW = '8537';
+const APP_PW = '3348537';
 
 // 비밀번호 확인 후 Firebase 인증 진행
 const authOverlay = document.createElement('div');
@@ -1028,19 +1033,15 @@ if(savedPw === APP_PW){
     input.focus();
   }, 100);
 }
-// ── hisys 전용 데이터 공간 ──
-// memo-app과 완전히 분리된 고정 경로를 사용 (경로 자동감지 없이 항상 이 값으로 고정)
-const SITE_NS = 'apps/hisys/';
-
-const memosRef = db.ref(SITE_NS+'memos');
-const annivsRef = db.ref(SITE_NS+'annivs');
-const chatRef = db.ref(SITE_NS+'chat');
-const boardRef = db.ref(SITE_NS+'board');
-const trashRef = db.ref(SITE_NS+'trash');
-const presenceRef = db.ref(SITE_NS+'presence');
+const memosRef = db.ref('memos');
+const annivsRef = db.ref('annivs');
+const chatRef = db.ref('chat');
+const boardRef = db.ref('board');
+const trashRef = db.ref('trash');
+const presenceRef = db.ref('presence');
 const connectedRef = db.ref('.info/connected');
-const board2Ref = db.ref(SITE_NS+'board2');
-const predictRef = db.ref(SITE_NS+'predict');
+const board2Ref = db.ref('board2');
+const predictRef = db.ref('predict');
 // 이 세션의 고유 ID (탭마다 다름)
 const sessionId = 'sess_' + Date.now() + '_' + Math.floor(Math.random()*10000);
 let isLocalChange = false; // 자기 자신이 쓴 변경은 재렌더만, 무한루프 방지용 플래그는 아니고 표시용
@@ -1487,14 +1488,14 @@ function confirmPassword(){
 // ── 댓글 ──
 function saveComment(boardType, postId, text){
   // boardType: 'board' or 'board2'
-  const ref=db.ref(SITE_NS+boardType+'/'+postId+'/comments');
+  const ref=db.ref(boardType+'/'+postId+'/comments');
   const cid='c'+Date.now();
   ref.child(cid).set({
     id:cid, text, author:myName||'익명', ts:Date.now()
   });
 }
 function deleteComment(boardType, postId, commentId){
-  db.ref(SITE_NS+boardType+'/'+postId+'/comments/'+commentId).remove();
+  db.ref(boardType+'/'+postId+'/comments/'+commentId).remove();
 }
 function buildCommentSection(boardType, post){
   const section=document.createElement('div');
@@ -1986,7 +1987,7 @@ function showToast(type, title, body, onClickTab){
 
 // ── 탭 제목 반짝임 ──
 let tabBlinkTimer=null;
-const ORIGINAL_TITLE='🖥️ HISYS';
+const ORIGINAL_TITLE='🏗️ HISYS 현장';
 function startTabBlink(msg){
   if(tabBlinkTimer)clearInterval(tabBlinkTimer); // 기존 메시지 교체
   let toggle=false;
@@ -3177,6 +3178,9 @@ function restoreFromTrash(tid){
   // 알람 주기 체크
   setInterval(function(){renderMemos();},60000);
   window.addEventListener('resize',function(){renderCal();applyCalToggle();});
+
+  // 시작 페이지: 게시판
+  switchMainTab('board');
 })();
 </script>
 </body>
