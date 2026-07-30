@@ -607,7 +607,8 @@ body{font-size:15px;}
 
 /* ── 폰 달력: 요일 칸 대신 리스트(agenda) 보기 ── */
 .cald.agenda-mode{display:flex;flex-direction:column;}
-.cald.agenda-mode .cell{flex-direction:row;align-items:flex-start;width:100%;min-height:auto;padding:10px 12px;gap:10px;border-right:none;}
+.cald.agenda-mode .cell{flex-direction:row;align-items:flex-start;width:100%;min-height:auto;height:auto;padding:10px 12px;gap:10px;border-right:none;overflow:visible;}
+.cald.agenda-mode .chips{overflow:visible;height:auto;}
 .cald.agenda-mode .daynum{width:auto;height:auto;min-width:92px;flex-shrink:0;border-radius:0;background:none!important;color:var(--text)!important;font-size:14px;font-weight:700;text-align:left;justify-content:flex-start;line-height:1.3;}
 .cald.agenda-mode .cell.sun .daynum{color:#f87171!important;}
 .cald.agenda-mode .cell.sat .daynum{color:#60a5fa!important;}
