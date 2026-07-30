@@ -2,17 +2,18 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>🏗️ HISYS 현장</title>
+<title>🖥️ HISYS</title>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <style>
 :root{--bg:#0f172a;--panel:#1e293b;--card:#1e293b;--hover:#2d3a52;--accent:#3b82f6;--accent2:#6366f1;--text:#e2e8f0;--sub:#94a3b8;--dim:#64748b;--border:#334155;}
 *{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 body{font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden;}
 /* topbar */
 .topbar{display:flex;align-items:center;gap:10px;padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--border);flex-shrink:0;flex-wrap:wrap;}
@@ -394,93 +395,87 @@ input[type=range]{accent-color:var(--accent);}
 
 /* ══ 폰 (640px 이하) ══ */
 @media(max-width:640px){
-  /* 기본 */
-  body{height:100dvh;font-size:15px;}
-  .topbar{padding:6px 10px;gap:6px;flex-wrap:nowrap;overflow-x:auto;}
-  .topbar-title{font-size:16px;white-space:nowrap;font-weight:800;}
+  /* 기본 레이아웃 */
+  body{height:100dvh;}
+  .topbar{padding:5px 8px;gap:5px;flex-wrap:nowrap;overflow-x:auto;}
+  .topbar-title{font-size:14px;white-space:nowrap;}
   .search-wrap{flex:1;min-width:0;}
-  .search-input{width:100%;font-size:14px;padding:6px 10px;}
-  .tbtn{font-size:12px;padding:5px 9px;white-space:nowrap;}
+  .search-input{width:100%;font-size:13px;}
+  .tbtn{font-size:10px;padding:3px 6px;white-space:nowrap;}
   #online-users{display:none;}
 
-  /* 메인탭 */
+  /* 메인탭 → 상단 스크롤 탭 */
   .maintabs{padding:0;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:0;border-bottom:2px solid var(--border);}
   .maintabs::-webkit-scrollbar{display:none;}
-  .mtab{font-size:14px;padding:10px 14px;white-space:nowrap;border-bottom:none;font-weight:600;}
+  .mtab{font-size:13px;padding:8px 12px;white-space:nowrap;border-bottom:none;}
   .mtab.on{border-bottom:3px solid var(--accent);}
 
-  /* 달력+메모 */
+  /* 달력+메모 페이지: 세로 분할 */
   .page#page-cal{flex-direction:column;}
   .main{flex-direction:column;overflow-y:auto;}
+
+  /* 달력: 전체 너비, 높이 자동 */
   .calp{width:100%;flex-shrink:0;border-right:none;border-bottom:1px solid var(--border);max-height:55dvh;}
   .calp.hidden{max-height:0;overflow:hidden;border-bottom:none;}
-  .calh-row1{gap:5px;}
-  .calml{font-size:13px;}
-  .calnav{width:28px;height:28px;font-size:14px;}
-  .btnadd{font-size:13px;padding:6px 12px;}
-  .wrtab{font-size:12px;padding:4px 8px;}
+  .calh-row1{gap:4px;}
+  .calml{font-size:11px;}
+  .calnav{width:22px;height:22px;font-size:12px;}
+  .btnadd{font-size:11px;padding:4px 8px;}
+  .wrtab{font-size:10px;padding:2px 5px;}
   .daynum{font-size:14px;width:22px;height:22px;}
-  .chip,.chip-holi,.chip-solar,.chip-anniv{font-size:11px;}
+  .chip,.chip-holi,.chip-solar,.chip-anniv{font-size:10px;}
   .cal-week-mode .chip,.cal-week-mode .chip-holi,.cal-week-mode .chip-solar,.cal-week-mode .chip-anniv{font-size:13px;}
-  .cal-toggle-btn{font-size:12px;padding:5px 9px;}
 
-  /* 메모 패널 */
+  /* 메모 패널: 전체 너비 */
   .memp{width:100%;flex:1;min-height:0;}
-  .memh{padding:8px 12px;gap:6px;flex-wrap:nowrap;overflow-x:auto;}
-  .memhdate{font-size:15px;white-space:nowrap;font-weight:700;}
-  .vtabs{gap:3px;}
-  .vtab{font-size:13px;padding:6px 10px;}
-  .meml{padding:10px;}
-  .meml.grid-mode{grid-template-columns:repeat(2,1fr);gap:8px;}
-  .mctitle{font-size:15px;}
-  .mcbody{font-size:14px;}
-  .mcard{padding:10px 12px;}
+  .memh{padding:7px 10px;gap:6px;flex-wrap:nowrap;overflow-x:auto;}
+  .memhdate{font-size:13px;white-space:nowrap;}
+  .vtabs{gap:2px;}
+  .vtab{font-size:11px;padding:4px 7px;}
+  .meml{padding:8px;}
+  .meml.grid-mode{grid-template-columns:repeat(2,1fr);gap:6px;}
+  .cal-hidden-mode .meml.grid-mode{grid-template-columns:repeat(2,1fr);}
+
+  /* 메모 카드 */
+  .mctitle{font-size:14px;}
+  .mcbody{font-size:13px;}
+  .mcard{padding:8px 10px;}
+  .mcard.compact .mctitle{font-size:11px;}
+  .mcard.compact .mcbody{font-size:10px;}
+
+  /* 달력 토글 버튼 */
+  .cal-toggle-btn{font-size:10px;padding:3px 6px;}
 
   /* 채팅 */
-  .chatbubble{font-size:15px;padding:9px 13px;}
-  .chatinput{font-size:15px;padding:10px 14px;}
-  .chatsend{padding:10px 16px;font-size:14px;}
-  .chathead{padding:8px 12px;font-size:14px;}
+  .chatbubble{font-size:14px;padding:8px 11px;}
+  .chatinput{font-size:14px;padding:8px 13px;}
+  .chatsend{padding:8px 14px;font-size:13px;}
+  .chathead{padding:6px 10px;}
 
   /* 게시판 */
-  .boardlist{grid-template-columns:1fr;}
-  .bptitle{font-size:15px;}
-  .bpbody{font-size:14px;}
-  .bpfoot{font-size:12px;}
-  .boardtoolbar{padding:8px 12px;}
-  .boardpost{padding:12px 14px 20px;}
-  .btnadd{font-size:14px;padding:7px 14px;}
-  .vtab{font-size:13px;}
-
-  /* 업무공유 */
-  #board2-list{padding:8px!important;}
+  .boardlist{grid-template-columns:repeat(2,1fr);}
+  .bptitle{font-size:13px;}
+  .bpbody{font-size:12px;}
+  .boardtoolbar{padding:7px 10px;}
 
   /* 모달 */
-  .modal{width:96vw!important;max-height:90dvh;padding:16px;}
-  .modal h2{font-size:17px;margin-bottom:12px;}
-  .fi{font-size:15px;padding:10px 12px;}
-  .fta{font-size:14px;padding:10px 12px;min-height:120px;}
-  .fl{font-size:13px;margin-bottom:4px;}
+  .modal{width:95vw!important;max-height:88dvh;padding:16px;}
+  .modal h2{font-size:15px;}
+  .fi,.fta{font-size:14px;padding:8px 10px;}
   .fr2{grid-template-columns:1fr;}
-  .bsav{padding:10px 18px;font-size:15px;}
-  .bcnl{padding:10px 14px;font-size:14px;}
-  .chkl{font-size:14px;}
+  .bsav,.bcnl{padding:8px 14px;font-size:13px;}
 
   /* 승부예측 */
   #predict-list{grid-template-columns:1fr!important;}
-  .predict-title{font-size:16px;}
+  .predict-title{font-size:15px;}
   .predict-table{font-size:14px;}
-  .predict-table td,.predict-table th{padding:6px 8px;}
 
-  /* 스와치 색상 선택 */
-  .csw{width:44px;height:30px;font-size:9px;}
+  /* 자료실 */
+  #board2-list{padding:8px!important;}
 
-  /* 공통 버튼 */
-  .mcbtn{font-size:13px;padding:4px 6px;}
-  .tbtn{min-height:32px;}
-
-  /* 휴지통/기념일 */
-  .trash-item{flex-direction:column;align-items:flex-start;gap:8px;}
+  /* 휴지통/기념일 모달 */
+  .trash-item{flex-direction:column;align-items:flex-start;gap:6px;}
+  .trash-item .btn-cancel,.trash-item .btn-del{width:100%;}
 }
 
 /* ══ 매우 작은 폰 (380px 이하) ══ */
@@ -506,6 +501,106 @@ input[type=range]{accent-color:var(--accent);}
   .topbar::-webkit-scrollbar{display:none;}
   #sync-status{font-size:9px;white-space:nowrap;}
 }
+
+
+/* ── 모바일 글자 크기 최적화 (640px 이하) ── */
+@media (max-width:640px){
+body{font-size:15px;}
+#sync-status{font-size:13px !important;}
+.abadge{font-size:14px !important;}
+.anadd select{font-size:14px !important;}
+.ani{font-size:14px !important;}
+.anidel{font-size:15px !important;}
+.anir{font-size:13px !important;}
+.attach-input-row .fi{font-size:14px !important;}
+.attach-name{font-size:15px !important;}
+.attach-url{font-size:13px !important;}
+.baadd{font-size:14px !important;}
+.bcnl{font-size:15px !important;}
+.board-editable table{font-size:14px !important;}
+.bp-attachments .attach-label{font-size:14px !important;}
+.bpbody{font-size:14px !important;}
+.bpbody table{font-size:14px !important;}
+.bpbody table td{font-size:14px !important;}
+.bpbody table th{font-size:14px !important;}
+.bpbody.expanded::after{font-size:14px !important;}
+.bpbody:not(.expanded)::after{font-size:15px !important;}
+.bpfoot{font-size:14px !important;}
+.bptitle{font-size:15px !important;}
+.bsav{font-size:15px !important;}
+.btnadd{font-size:14px !important;}
+.cal-toggle-btn{font-size:14px !important;}
+.cal-week-mode .chip{font-size:15px !important;}
+.cal-week-mode .chip-anniv{font-size:15px !important;}
+.cal-week-mode .chip-holi{font-size:15px !important;}
+.cal-week-mode .chip-solar{font-size:15px !important;}
+.calml{font-size:14px !important;}
+.calnav{font-size:14px !important;}
+.chatauthor{font-size:14px !important;}
+.chatsend{font-size:15px !important;}
+.chattime{font-size:13px !important;}
+.chip{font-size:15px !important;}
+.chip-anniv{font-size:15px !important;}
+.chip-holi{font-size:15px !important;}
+.chip-solar{font-size:15px !important;}
+.chkl{font-size:14px !important;}
+.comment-author{font-size:14px !important;}
+.comment-body{font-size:14px !important;}
+.comment-del{font-size:14px !important;}
+.comment-input{font-size:14px !important;}
+.comment-send{font-size:14px !important;}
+.comment-time{font-size:13px !important;}
+.comment-title{font-size:14px !important;}
+.csw{font-size:13px !important;}
+.dbadge{font-size:14px !important;}
+.empty{font-size:15px !important;}
+.fi{font-size:15px !important;}
+.fl{font-size:14px !important;}
+.fta{font-size:15px !important;}
+.mcard.compact .abadge{font-size:13px !important;}
+.mcard.compact .dbadge{font-size:13px !important;}
+.mcard.compact .mcbody{font-size:14px !important;}
+.mcard.compact .mcbtn{font-size:14px !important;}
+.mcard.compact .mctitle{font-size:14px !important;}
+.mcbody{font-size:15px !important;}
+.memhdate{font-size:15px !important;}
+.morechip{font-size:14px !important;}
+.mtab{font-size:15px !important;}
+.mtab .badge{font-size:13px !important;}
+.pf-row-hdr span{font-size:14px !important;}
+.predict-comment-author{font-size:14px !important;}
+.predict-comment-body{font-size:14px !important;}
+.predict-comment-del{font-size:14px !important;}
+.predict-comment-input{font-size:14px !important;}
+.predict-comment-send{font-size:14px !important;}
+.predict-comment-time{font-size:13px !important;}
+.predict-del{font-size:15px !important;}
+.predict-edit-btn{font-size:15px !important;}
+.predict-foot{font-size:14px !important;}
+.predict-lock{font-size:13px !important;}
+.predict-meta{font-size:13px !important;}
+.predict-option-btn{font-size:14px !important;}
+.predict-winner-btn{font-size:14px !important;}
+.read-check{font-size:14px !important;}
+.search-clear{font-size:15px !important;}
+.search-empty{font-size:15px !important;}
+.search-input{font-size:15px !important;}
+.search-item-body{font-size:14px !important;}
+.search-item-kind{font-size:13px !important;}
+.search-item-meta{font-size:13px !important;}
+.search-item-title{font-size:15px !important;}
+.sfbtn{font-size:14px !important;}
+.tbtn{font-size:14px !important;}
+.tbtn .badge{font-size:13px !important;}
+.toast-body{font-size:14px !important;}
+.toast-title{font-size:14px !important;}
+.trash-kind{font-size:14px !important;}
+.trash-meta{font-size:13px !important;}
+.trash-title{font-size:15px !important;}
+.vtab{font-size:15px !important;}
+.wd{font-size:14px !important;}
+.wrtab{font-size:13px !important;}
+}
 </style>
 </head>
 <body>
@@ -513,7 +608,7 @@ input[type=range]{accent-color:var(--accent);}
 <div id="img-viewer"><img id="img-viewer-img" src=""></div>
 
 <div class="topbar">
-  <div class="topbar-title">🏗️ <span>HI</span>SYS 현장</div>
+  <div class="topbar-title">🖥️ <span>HI</span>SYS</div>
   <div class="search-wrap">
     <input class="search-input" id="search-input" type="text" placeholder="🔍 메모·게시판·채팅 검색...">
     <button class="search-clear hide" id="search-clear">✕</button>
@@ -527,9 +622,9 @@ input[type=range]{accent-color:var(--accent);}
 </div>
 
 <div class="maintabs">
-  <button class="mtab" id="mtab-cal">📅 달력/메모</button>
+  <button class="mtab on" id="mtab-cal">📅 달력/메모</button>
   <button class="mtab" id="mtab-chat">💬 채팅 <span class="badge hide" id="chat-badge">0</span></button>
-  <button class="mtab on" id="mtab-board">📌 게시판 <span class="badge hide" id="board-badge">0</span></button>
+  <button class="mtab" id="mtab-board">📌 게시판 <span class="badge hide" id="board-badge">0</span></button>
   <button class="mtab" id="mtab-board2">📋 업무공유</button>
   <button class="mtab" id="mtab-predict">🏆 승부예측</button>
 </div>
@@ -920,7 +1015,7 @@ let flashNewMemoId=null; // 방금 도착한 새 글 강조용
 let chatMsgs=[], boardPosts=[];
 let knownChatIds=null, knownBoardIds=null;
 let chatUnread=0, boardUnread=0;
-let curMainTab='board';
+let curMainTab='cal';
 let editBoardId=null;
 let bfBgColor='#263046', bfTextColor='#e2e8f0';
 let boardView='all'; // 'all' | 'archive'
@@ -941,11 +1036,11 @@ function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').
 
 // ── Firebase 설정 ──
 const firebaseConfig = {
-  apiKey: "AIzaSyDzDXhN7t5Ej4mRevMzO8IJUnGzU3yG87U",
-  authDomain: "hisys-app.firebaseapp.com",
-  databaseURL: "https://hisys-app-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "hisys-app",
-  storageBucket: "hisys-app.firebasestorage.app",
+  apiKey: "AIzaSyCyPvfNmCzf3N27nFYlW1RLRSn7xajoYO0",
+  authDomain: "kimbk-memo2.firebaseapp.com",
+  databaseURL: "https://kimbk-memo2-default-rtdb.firebaseio.com",
+  projectId: "kimbk-memo2",
+  storageBucket: "kimbk-memo2.firebasestorage.app",
   messagingSenderId: "405004928399",
   appId: "1:405004928399:web:b3764abc13941bb7a077fa"
 };
@@ -953,7 +1048,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 
-const APP_PW = '3348537';
+const APP_PW = '8537';
 
 // 비밀번호 확인 후 Firebase 인증 진행
 const authOverlay = document.createElement('div');
@@ -1033,15 +1128,19 @@ if(savedPw === APP_PW){
     input.focus();
   }, 100);
 }
-const memosRef = db.ref('memos');
-const annivsRef = db.ref('annivs');
-const chatRef = db.ref('chat');
-const boardRef = db.ref('board');
-const trashRef = db.ref('trash');
-const presenceRef = db.ref('presence');
+// ── hisys 전용 데이터 공간 ──
+// memo-app과 완전히 분리된 고정 경로를 사용 (경로 자동감지 없이 항상 이 값으로 고정)
+const SITE_NS = 'apps/hisys/';
+
+const memosRef = db.ref(SITE_NS+'memos');
+const annivsRef = db.ref(SITE_NS+'annivs');
+const chatRef = db.ref(SITE_NS+'chat');
+const boardRef = db.ref(SITE_NS+'board');
+const trashRef = db.ref(SITE_NS+'trash');
+const presenceRef = db.ref(SITE_NS+'presence');
 const connectedRef = db.ref('.info/connected');
-const board2Ref = db.ref('board2');
-const predictRef = db.ref('predict');
+const board2Ref = db.ref(SITE_NS+'board2');
+const predictRef = db.ref(SITE_NS+'predict');
 // 이 세션의 고유 ID (탭마다 다름)
 const sessionId = 'sess_' + Date.now() + '_' + Math.floor(Math.random()*10000);
 let isLocalChange = false; // 자기 자신이 쓴 변경은 재렌더만, 무한루프 방지용 플래그는 아니고 표시용
@@ -1488,14 +1587,14 @@ function confirmPassword(){
 // ── 댓글 ──
 function saveComment(boardType, postId, text){
   // boardType: 'board' or 'board2'
-  const ref=db.ref(boardType+'/'+postId+'/comments');
+  const ref=db.ref(SITE_NS+boardType+'/'+postId+'/comments');
   const cid='c'+Date.now();
   ref.child(cid).set({
     id:cid, text, author:myName||'익명', ts:Date.now()
   });
 }
 function deleteComment(boardType, postId, commentId){
-  db.ref(boardType+'/'+postId+'/comments/'+commentId).remove();
+  db.ref(SITE_NS+boardType+'/'+postId+'/comments/'+commentId).remove();
 }
 function buildCommentSection(boardType, post){
   const section=document.createElement('div');
@@ -1987,7 +2086,7 @@ function showToast(type, title, body, onClickTab){
 
 // ── 탭 제목 반짝임 ──
 let tabBlinkTimer=null;
-const ORIGINAL_TITLE='🏗️ HISYS 현장';
+const ORIGINAL_TITLE='🖥️ HISYS';
 function startTabBlink(msg){
   if(tabBlinkTimer)clearInterval(tabBlinkTimer); // 기존 메시지 교체
   let toggle=false;
@@ -3178,9 +3277,6 @@ function restoreFromTrash(tid){
   // 알람 주기 체크
   setInterval(function(){renderMemos();},60000);
   window.addEventListener('resize',function(){renderCal();applyCalToggle();});
-
-  // 시작 페이지: 게시판
-  switchMainTab('board');
 })();
 </script>
 </body>
